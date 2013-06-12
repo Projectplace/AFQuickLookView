@@ -90,4 +90,31 @@
                      success:(void (^)(void))success
                      failure:(void (^)(NSError* error))failure
                     progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
+
+
+- (void)saveDataToTemporaryFileWithOperation:(AFHTTPRequestOperation*)operation
+                                     success:(void (^)(AFHTTPRequestOperation* operation, NSURL *localFileURL))success
+                                     failure:(void (^)(AFHTTPRequestOperation* operation, NSError* error))failure;
+
+- (void)previewDocumentAtURL:(NSURL*)url;
+
+- (void)previewDocumentAtURL:(NSURL*)url
+                     success:(void (^)(void))success
+                     failure:(void (^)(NSError* error))failure;
+
+- (void)previewDocumentAtURL:(NSURL*)url
+                     success:(void (^)(void))success
+                     failure:(void (^)(NSError* error))failure
+                    progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress;
+
+- (NSString*)genericTemporaryFileName;
+
+- (void)handleCouldNotSaveDataToTemporaryFileWithOperation:(AFHTTPRequestOperation*)operation
+                                                     error:(NSError*)error;
+- (void)handleCouldNotDownloadDataForGivenURL:(NSURL*)url
+                                    operation:(AFHTTPRequestOperation*)operation
+                                        error:(NSError*)error;
+
+- (void)handleFailureBlockWithError:(NSError*)error;
+
 @end
